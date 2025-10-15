@@ -10,7 +10,7 @@
     "dev": "nodemon server.js",
     "start": "node server.js"
   },
-  "author": "shahriar Sajeeb",
+  "author": "Bello Tope",
   "license": "ISC",
   "dependencies": {
     "bcryptjs": "^2.4.3",
