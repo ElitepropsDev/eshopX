@@ -28,7 +28,7 @@ const ShopSettings = () => {
         setAvatar(reader.result);
         axios
           .put(
-            `${server}/shop/update-shop-avatar`,
+            `${server}/api/v2/shop/update-shop-avatar`,
             { avatar: reader.result },
             {
               withCredentials: true,
