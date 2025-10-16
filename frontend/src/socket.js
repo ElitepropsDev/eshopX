@@ -1,6 +1,8 @@
 import { io } from "socket.io-client";
 
-const ENDPOINT = "http://localhost:8000"; // backend URL
+// Change this to your Render socket server
+const ENDPOINT = "https://eshopx-socket-server.onrender.com";
+
 const socket = io(ENDPOINT, { transports: ["websocket"] });
 
 export default socket;
