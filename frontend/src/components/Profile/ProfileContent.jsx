@@ -57,7 +57,7 @@ const ProfileContent = ({ active }) => {
         setAvatar(reader.result);
         axios
           .put(
-            `${server}/user/update-avatar`,
+            `${server}/api/v2/user/update-avatar`,
             { avatar: reader.result },
             {
               withCredentials: true,
