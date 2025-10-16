@@ -6,13 +6,15 @@ const bodyParser = require("body-parser");
 const cors = require("cors");
 
 app.use(cors({
-  origin: ['https://eshopx-live.vercel.app/',
+  origin: [
+    'https://eshopx-live.vercel.app',
     'https://elite-eshop.vercel.app',
-     'http://localhost:3000' // local development
+    'https://eshop-x.vercel.app',
+    'http://localhost:3000'
   ],
-  
   credentials: true
 }));
+
 
 app.use(express.json({ limit: "50mb" }));
 app.use(cookieParser());
