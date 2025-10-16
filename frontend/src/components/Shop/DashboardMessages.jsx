@@ -10,9 +10,9 @@ import { TfiGallery } from "react-icons/tfi";
 import { format } from "timeago.js";
 import socket from "../../socket"; 
 
-// import socketIO from "socket.io-client";
-// const ENDPOINT = "http://localhost:8000";
-// const socketId = socketIO(ENDPOINT, { transports: ["websocket"] });
+import socketIO from "socket.io-client";
+const ENDPOINT = "https://eshopx-socket-server.onrender.com/";
+const socketId = socketIO(ENDPOINT, { transports: ["websocket"] });
 
 const DashboardMessages = () => {
   const { seller,isLoading } = useSelector((state) => state.seller);

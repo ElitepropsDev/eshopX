@@ -9,9 +9,10 @@ import { useNavigate } from "react-router-dom";
 import { AiOutlineArrowRight, AiOutlineSend } from "react-icons/ai";
 import { TfiGallery } from "react-icons/tfi";
 import styles from "../styles/styles";
-import socket from "../socket";
-// const ENDPOINT = "http://localhost:8000";
-// const socketId = socketIO(ENDPOINT, { transports: ["websocket"] });
+// import socket from "../socket";
+import socketIO from "socket.io-client";
+const ENDPOINT = "https://eshopx-socket-server.onrender.com/";
+const socketId = socketIO(ENDPOINT, { transports: ["websocket"] });
 
 const UserInbox = () => {
   const { user,loading } = useSelector((state) => state.user);

@@ -10,7 +10,7 @@ const BestDeals = () => {
   useEffect(() => {
     const allProductsData = allProducts ? [...allProducts] : [];
     const sortedData = allProductsData?.sort((a, b) => b.sold_out - a.sold_out);
-    const firstTen = sortedData && sortedData.slice(0, 10);
+    const firstTen = sortedData && sortedData.slice(0, 20);
     setData(firstTen);
   }, [allProducts]);
 
