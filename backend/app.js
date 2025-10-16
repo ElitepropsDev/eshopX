@@ -7,7 +7,6 @@ const cors = require("cors");
 
 app.use(cors({
   origin: ['https://eshopx-live.vercel.app/',
-    'https://elite-eshop.vercel.app',
      'http://localhost:3000' // local development
   ],
   
