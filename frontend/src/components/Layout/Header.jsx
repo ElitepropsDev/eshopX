@@ -83,7 +83,13 @@ const Header = ({ activeHeading }) => {
                 {searchData &&
                   searchData.map((i, index) => {
                     return (
-                      <Link to={`/product/${i._id}`}>
+                      <Link
+                        to={`/product/${i._id}`}
+                        onClick={() => {
+                          setSearchData([]);
+                          setSearchTerm("");
+                        }}
+                      >
                         <div className="w-full flex items-start-py-3">
                           <img
                             src={`${i.images[0]?.url}`}
@@ -219,11 +225,10 @@ const Header = ({ activeHeading }) => {
           <div>
             <Link to="/">
               <img
-  src={logo}
-  alt="EshopX Logo"
-  className="mt-3 cursor-pointer w-24 sm:w-28 md:w-32 lg:w-36 xl:w-40 h-auto"
-/>
-
+                src={logo}
+                alt="EshopX Logo"
+                className="mt-3 cursor-pointer w-24 sm:w-28 md:w-32 lg:w-36 xl:w-40 h-auto"
+              />
             </Link>
           </div>
           <div>
@@ -269,7 +274,8 @@ const Header = ({ activeHeading }) => {
                 />
               </div>
 
-              <div className="my-8 w-[92%] m-auto h-[40px relative]">
+              {/* serach bar */}
+              <div className="my-8 w-[92%] m-auto h-[40px] relative">
                 <input
                   type="search"
                   placeholder="Search Product..."
@@ -284,13 +290,25 @@ const Header = ({ activeHeading }) => {
 
                       const Product_name = d.replace(/\s+/g, "-");
                       return (
-                        <Link to={`/product/${Product_name}`}>
+                        <Link
+                          to={`/product/${i._id}`}
+                          onClick={() => {
+                            setSearchData([]);
+                            setSearchTerm("");
+                            setOpen(false); 
+                          }}
+                        >
                           <div className="flex items-center">
                             <img
-                              src={i.image_Url[0]?.url}
-                              alt=""
-                              className="w-[50px] mr-2"
+                              src={
+                                i.images && i.images.length > 0
+                                  ? i.images[0].url
+                                  : "/default.png"
+                              }
+                              alt={i.name}
+                              className="w-[50px] h-[50px] object-cover mr-2"
                             />
+
                             <h5>{i.name}</h5>
                           </div>
                         </Link>

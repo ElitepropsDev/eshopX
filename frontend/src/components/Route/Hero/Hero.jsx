@@ -69,66 +69,65 @@ const Hero = () => {
   };
 
   return (
-    <div className="relative w-full overflow-hidden h-[20vh] 800px:h-[80vh]">
-      {/* Slides */}
+    <div className="relative w-full overflow-hidden h-[35vh] sm:h-[40vh] md:h-[60vh] 800px:h-[80vh]">
+  {/* Slides */}
+  <div
+    className="flex transition-transform duration-700 ease-in-out"
+    style={{ transform: `translateX(-${current * 100}%)` }}
+    onTouchStart={(e) => setTouchStart(e.touches[0].clientX)}
+    onTouchMove={(e) => setTouchEnd(e.touches[0].clientX)}
+    onTouchEnd={handleSwipe}
+  >
+    {images.map((img, index) => (
       <div
-        className="flex transition-transform duration-700 ease-in-out"
-        style={{ transform: `translateX(-${current * 100}%)` }}
-        onTouchStart={(e) => setTouchStart(e.touches[0].clientX)}
-        onTouchMove={(e) => setTouchEnd(e.touches[0].clientX)}
-        onTouchEnd={handleSwipe}
+        key={index}
+        className="min-w-full h-[45vh] sm:h-[50vh] md:h-[60vh] 800px:h-[80vh] bg-cover bg-center bg-no-repeat flex items-center justify-center relative"
+        style={{ backgroundImage: `url(${img})` }}
       >
-        {images.map((img, index) => (
-          <div
-            key={index}
-            className="min-w-full h-[20vh] 800px:h-[80vh] bg-cover bg-center bg-no-repeat flex items-center justify-center relative"
-            style={{ backgroundImage: `url(${img})` }}
-          >
-            {/* Dark overlay for text readability */}
-            <div className="absolute inset-0 bg-black bg-opacity-30"></div>
+        {/* Overlay */}
+        <div className="absolute inset-0 bg-black bg-opacity-30"></div>
 
-            {/* Hero Text Content */}
+        {/* Hero Text */}
+        <div
+          className={`${styles.section} relative z-10 w-[90%] md:w-[60%] text-center md:text-left 
+          max-[500px]:mt-8 max-[500px]:px-4 scale-[0.95] 800px:scale-100`}
+        >
+          <h1 className="text-[22px] leading-[1.1] sm:text-[26px] md:text-[40px] 800px:text-[60px] text-white font-[600] capitalize drop-shadow-md">
+            Best Collection for <br className="hidden md:block" /> all your needs!
+          </h1>
+          <p className="pt-2 text-[12px] sm:text-[14px] md:text-[16px] font-[Poppins] font-[400] text-white drop-shadow-sm 800px:block">
+            Discover quality, style, and unbeatable prices. From essentials
+            to luxury items, we’ve got something for everyone.
+          </p>
+
+          <Link to="/products" className="inline-block -mt-3 800px:mt-5">
             <div
-              className={`${styles.section} relative z-10 w-[90%] md:w-[60%] text-center md:text-left`}
-              style={{
-                marginLeft: window.innerWidth >= 768 ? "100px" : "10px",
-                transform: window.innerWidth < 800 ? "scale(0.8)" : "scale(1)",
-              }}
-            >
-              <h1 className="text-[22px] leading-[1.1] 800px:text-[60px] text-white font-[600] capitalize drop-shadow-md">
-                Best Collection for <br className="hidden md:block" /> all your
-                needs!
-              </h1>
-              <p className="pt-2 text-[12px] 800px:text-[16px] font-[Poppins] font-[400] text-white drop-shadow-sm  800px:block">
-                Discover quality, style, and unbeatable prices. From essentials
-                to luxury items, we’ve got something for everyone.
-              </p>
-
-              <Link to="/products" className="inline-block mt-5 800px:mt-5">
-                <div className={`${styles.button} mt-3 px-4 py-2`}>
-                  <span className="text-[#fff] font-[Poppins] text-[14px] 800px:text-[18px]">
-                    Shop Now
-                  </span>
-                </div>
-              </Link>
+  className={`${styles.button} mt-3 px-1 py-[2px] scale-[0.70] 800px:scale-100`}
+>
+              <span className="text-[#fff] font-[Poppins] text-[12px] 800px:text-[18px]">
+                Shop Now
+              </span>
             </div>
-          </div>
-        ))}
+          </Link>
+        </div>
       </div>
+    ))}
+  </div>
 
-      {/* Dots Navigation */}
-      <div className="absolute bottom-1 800px:bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2 z-0">
-        {images.map((_, i) => (
-          <button
-            key={i}
-            onClick={() => setCurrent(i)}
-            className={`w-2 h-2 800px:w-3 800px:h-3 rounded-full ${
-              current === i ? "bg-white" : "bg-gray-400"
-            }`}
-          ></button>
-        ))}
-      </div>
-    </div>
+  {/* Dots Navigation */}
+  <div className="absolute bottom-1 800px:bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2 z-0">
+    {images.map((_, i) => (
+      <button
+        key={i}
+        onClick={() => setCurrent(i)}
+        className={`w-2 h-2 800px:w-3 800px:h-3 rounded-full ${
+          current === i ? "bg-white" : "bg-gray-400"
+        }`}
+      ></button>
+    ))}
+  </div>
+</div>
+
   );
 };
 
