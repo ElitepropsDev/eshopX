@@ -116,7 +116,7 @@ const Hero = () => {
       </div>
 
       {/* Dots Navigation */}
-      <div className="absolute bottom-1 800px:bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2 z-0">
+      <div className="absolute bottom-7 800px:bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2 z-0">
         {images.map((_, i) => (
           <button
             key={i}
