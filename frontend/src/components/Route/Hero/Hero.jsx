@@ -103,7 +103,7 @@ const Hero = () => {
 
           <Link to="/products" className="inline-block mt-3 800px:mt-5">
             <div
-              className={`${styles.button} px-2 py-[2px] scale-[0.75] 800px:scale-100`}
+              className={`${styles.button} px-2 py-[2px] scale-[0.85] 800px:scale-100`}
             >
               <span className="text-[#fff] font-[Poppins] text-[12px] 800px:text-[18px]">
                 Shop Now

@@ -62,124 +62,126 @@ const ProductCard = ({ data, isEvent, small }) => {
       <div
   className={`${
     small
-      ? "w-full h-[220px] p-1 rounded-xl border border-gray-300 shadow-md hover:shadow-lg"
-      : "w-full h-[320px] p-3 rounded-xl border border-gray-100 shadow-lg hover:shadow-2xl"
+      ? "w-full h-[160px] p-1 border border-gray-200 shadow-sm hover:shadow-md rounded-none"
+      : "w-full h-[320px] p-3 border border-gray-100 shadow-lg hover:shadow-2xl rounded-xl"
   } bg-white transition-all duration-300 relative cursor-pointer`}
 >
+  {/* Image */}
+  <Link
+    to={
+      isEvent
+        ? `/product/${data._id}?isEvent=true`
+        : `/product/${data._id}`
+    }
+  >
+    <img
+      src={`${data.images && data.images[0]?.url}`}
+      alt=""
+      className={`${
+        small ? "w-full h-[80px]" : "w-full h-[170px]"
+      } object-contain`}
+    />
+  </Link>
 
-        {/* Image */}
-        <Link
-          to={
-            isEvent
-              ? `/product/${data._id}?isEvent=true`
-              : `/product/${data._id}`
-          }
+  {/* Shop name */}
+  <Link to={`/shop/preview/${data?.shop._id}`}>
+    <h5
+      className={`${styles.shop_name} ${
+        small ? "text-[9px]" : "text-[15px]"
+      } text-[tomato] leading-tight`}
+    >
+      {data.shop.name}
+    </h5>
+  </Link>
+
+  {/* Product name */}
+  <Link
+    to={
+      isEvent
+        ? `/product/${data._id}?isEvent=true`
+        : `/product/${data._id}`
+    }
+  >
+    <h4
+      className={`font-[500] truncate ${
+        small
+          ? "text-[9px] mt-[-4px]"
+          : "text-[16px] mt-0"
+      }`}
+    >
+      {data.name.length > (small ? 28 : 40)
+        ? data.name.slice(0, small ? 28 : 40) + "..."
+        : data.name}
+    </h4>
+
+    {/* Price & sold */}
+    <div
+      className={`flex items-center justify-between ${
+        small ? "py-[1px]" : "py-2"
+      }`}
+    >
+      <div className="flex items-center space-x-1">
+        <h5
+          className={`${styles.productDiscountPrice} ${
+            small ? "text-[8.5px]" : ""
+          }`}
         >
-          <img
-            src={`${data.images && data.images[0]?.url}`}
-            alt=""
-            className={`${
-              small ? "w-full h-[110px]" : "w-full h-[170px]"
-            } object-contain`}
-          />
-        </Link>
-
-        {/* Shop name */}
-        <Link to={`/shop/preview/${data?.shop._id}`}>
-          <h5
-            className={`${styles.shop_name} ${
-              small ? "text-[10px]" : "text-[15px]"
-            } text-[tomato]`}
-          >
-            {data.shop.name}
-          </h5>
-        </Link>
-
-        {/* Product name */}
-        <Link
-          to={
-            isEvent
-              ? `/product/${data._id}?isEvent=true`
-              : `/product/${data._id}`
-          }
-        >
-          <h4
-            className={`pb-0 md:pb-1 mt-[-8px] md:mt-0 font-[500] ${
-              small ? "text-[10px]" : "text-[16px]"
-            }`}
-          >
-            {data.name.length > (small ? 30 : 40)
-              ? data.name.slice(0, small ? 30 : 40) + "..."
-              : data.name}
-          </h4>
-
-          {/* Price & sold */}
-          <div
-            className={`flex items-center justify-between ${
-              small ? "py-1" : "py-2"
-            }`}
-          >
-            <div className="flex items-center space-x-1">
-              <h5
-                className={`${styles.productDiscountPrice} ${
-                  small ? "text-[9.9px]" : ""
-                }`}
-              >
-                {data.originalPrice === 0
-                  ? data.originalPrice
-                  : data.discountPrice}
-                $
-              </h5>
-              <h4 className={`${styles.price} ${small ? "text-[9px]" : ""}`}>
-                {data.originalPrice ? data.originalPrice + " $" : null}
-              </h4>
-            </div>
-            <span
-              className={`font-[400] ${
-                small ? "text-[12px]" : "text-[17px]"
-              } text-[#68d284]`}
-            >
-              {data.sold_out} sold
-            </span>
-          </div>
-        </Link>
-
-        {/* Icons */}
-        <div>
-          {click ? (
-            <AiFillHeart
-              size={small ? 16 : 22}
-              className="cursor-pointer absolute right-1 top-2"
-              onClick={() => removeFromWishlistHandler(data)}
-              color={click ? "red" : "#333"}
-              title="Remove from wishlist"
-            />
-          ) : (
-            <AiOutlineHeart
-              size={small ? 16 : 22}
-              className="cursor-pointer absolute right-1 top-2"
-              onClick={() => addToWishlistHandler(data)}
-              color={click ? "red" : "#333"}
-              title="Add to wishlist"
-            />
-          )}
-          <AiOutlineEye
-            size={small ? 16 : 22}
-            className="cursor-pointer absolute right-1 top-8"
-            onClick={() => setOpen(!open)}
-            color="#333"
-            title="Quick view"
-          />
-          <AiOutlineShoppingCart
-            size={small ? 20 : 25}
-            className="cursor-pointer absolute right-1 top-14"
-            onClick={() => addToCartHandler(data._id)}
-            color="#444"
-            title="Add to cart"
-          />
-          {open && <ProductDetailsCard setOpen={setOpen} data={data} />}
-        </div>
+          {data.originalPrice === 0
+            ? data.originalPrice
+            : data.discountPrice}
+          $
+        </h5>
+        <h4 className={`${styles.price} ${small ? "text-[8px]" : ""}`}>
+          {data.originalPrice ? data.originalPrice + " $" : null}
+        </h4>
       </div>
+      <span
+        className={`font-[400] ${
+          small ? "text-[10px]" : "text-[17px]"
+        } text-[#68d284]`}
+      >
+        {data.sold_out} sold
+      </span>
+    </div>
+  </Link>
+
+  {/* Icons */}
+  <div>
+    {click ? (
+      <AiFillHeart
+        size={small ? 14 : 22}
+        className="cursor-pointer absolute right-1 top-1"
+        onClick={() => removeFromWishlistHandler(data)}
+        color={click ? "red" : "#333"}
+        title="Remove from wishlist"
+      />
+    ) : (
+      <AiOutlineHeart
+        size={small ? 14 : 22}
+        className="cursor-pointer absolute right-1 top-1"
+        onClick={() => addToWishlistHandler(data)}
+        color={click ? "red" : "#333"}
+        title="Add to wishlist"
+      />
+    )}
+    <AiOutlineEye
+      size={small ? 14 : 22}
+      className="cursor-pointer absolute right-1 top-6"
+      onClick={() => setOpen(!open)}
+      color="#333"
+      title="Quick view"
+    />
+    <AiOutlineShoppingCart
+      size={small ? 18 : 25}
+      className="cursor-pointer absolute right-1 top-[46px]"
+      onClick={() => addToCartHandler(data._id)}
+      color="#444"
+      title="Add to cart"
+    />
+    {open && <ProductDetailsCard setOpen={setOpen} data={data} />}
+  </div>
+</div>
+
     </>
   );
 };

@@ -35,12 +35,11 @@ const BestDeals = () => {
         </div>
 
         {/* ✅ Mobile View (scrollable + smaller cards) */}
-
-        <div className="md:hidden flex overflow-x-auto gap-[12px] scroll-smooth scrollbar-hide mb-4">
+        <div className="md:hidden flex overflow-x-auto gap-[5px] px-2 scroll-smooth scrollbar-hide mb-3">
           {data &&
             data.length !== 0 &&
             data.map((i, index) => (
-              <div key={index} className="min-w-[32%] snap-start">
+              <div key={index} className="min-w-[25%] snap-start">
                 <ProductCard data={i} small />
               </div>
             ))}
