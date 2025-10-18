@@ -216,11 +216,11 @@ const ProductDetails = ({ data }) => {
 
                 <div className="flex items-center pt-8 max-[800px]:pt-4">
                   <img
-                    src={data?.shop?.avatar?.url || "/default-avatar.png"}
-                    alt="Shop Avatar"
-                    className="w-[50px] h-[50px] rounded-full mr-2 max-[800px]:w-[35px] max-[800px]:h-[35px] object-cover"
-                    loading="lazy"
-                  />
+  src={data?.shop?.avatar?.url || '/default-avatar.png'}
+  alt="Shop Avatar"
+  className="w-[50px] h-[50px] rounded-full mr-2 max-[800px]:w-[35px] max-[800px]:h-[35px] object-cover"
+  loading="lazy"
+/>
 
                   <div className="pr-8">
                     <Link to={`/shop/preview/${data?.shop._id}`}>
@@ -355,17 +355,10 @@ const ProductDetailsInfo = ({
             <Link to={`/shop/preview/${data.shop._id}`}>
               <div className="flex items-center">
                 <img
-  src={
-    data?.shop?.avatar?.public_id
-      ? `https://res.cloudinary.com/ddeobidug/image/upload/f_png/${data.shop.avatar.public_id}.png`
-      : "/default-avatar.png"
-  }
-  alt="Shop Avatar"
-  className="w-[50px] h-[50px] rounded-full object-cover max-[768px]:w-[40px] max-[768px]:h-[40px]"
-  loading="lazy"
-/>
-
-
+                  src={`${data?.shop?.avatar?.url}`}
+                  className="w-[50px] h-[50px] rounded-full max-[768px]:w-[40px] max-[768px]:h-[40px]"
+                  alt=""
+                />
                 <div className="pl-3">
                   <h3 className={`${styles.shop_name} max-[768px]:text-[13px]`}>
                     {data.shop.name}
